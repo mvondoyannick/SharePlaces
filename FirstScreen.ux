@@ -1,0 +1,3 @@
+<Panel ux:Class="Shareplace.FirstScreen">
+	<Router ux:Dependency="router" />
+</Panel>

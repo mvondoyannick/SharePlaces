@@ -1,0 +1,34 @@
+<Panel ux:Class="Shareplace.Itineraire">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+	// get paramrs from user
+	hikr = this.Parameter;
+
+		function detail(){
+			router.goto("splash");
+		}
+
+		module.exports = {
+			detail: detail,
+			hikr: hikr
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<!-- <Panel Height="50" Width="100%" Dock="Top" Background="#ffffff">
+			<Grid Columns="50,1*,50">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf060;" Margin="0,0,0,0" Clicked="{detail}" />
+				<Text Value="SharePlaced" Alignment="CenterLeft" Padding="25,0,0,0" Margin="0,0,0,0" FontSize="18" />
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf0f3;" Margin="0,0,0,0" />
+			</Grid>
+			<Shadow />
+		</Panel> -->
+		<CoreElements.AppBar Dock="Top" />
+		<NativeViewHost>
+			<MapView Longitude="{hikr.coords.long}" Latitude="{hikr.coords.lat}" Zoom="13" AllowRotate="true" AllowZoom="true" AllowTilt="true" ShowCompass="true" ShowMyLocation="true" ShowMyLocationButton="true" Tilt="45">
+				<MapMarker Longitude="{hikr.coords.long}" Latitude="{hikr.coords.lat}" Label="Votre client de {hikr.destination} est ici" />
+			</MapView>
+		</NativeViewHost>
+	</DockPanel>
+</Panel>

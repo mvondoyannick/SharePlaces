@@ -1,0 +1,54 @@
+<Panel ux:Class="Shareplace.signup_step_car">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function back(){
+			router.goBack();
+		}
+
+		function end(){
+			router.push('signupEnd')
+		}
+
+		module.exports = {
+			back: back,
+			end: end
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<Panel Height="50" Dock="Top" Width="100%" Background="#7B1FA2">
+			<Grid Columns="50, 1*, 50">
+				<Image File="Assets/Images/outline_arrow_back_white_18dp.png" Width="30" Alignment="Center" Clicked="{back}" />
+				<Text Value="Mon type de véhicule" Alignment="Center" TextAlignment="Center" TextColor="#FFF" />
+				<Image File="Assets/Images/outline_add_a_photo_white_18dp.png" Width="30" Alignment="Center"  />
+			</Grid>
+			<DropShadow />
+		</Panel>
+
+		<!-- Example usage -->
+		<StackPanel Margin="10" ItemSpacing="10">
+
+			<!-- insert image -->
+			<Image File="Assets/Images/car.png" Alignment="TopCenter" Width="80" Margin="0,20,0,20" />
+			<Text Value="Présenter le modèle de véhicule que vous utilisez pour le transport du personnel." TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+			<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+				<MyTextInput PlaceholderText="Saisir un modèle de véhicule" Margin="0,20,0,10" />		
+
+		  </Grid>
+
+		</StackPanel>
+		<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{end}">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Terminer" />
+				<DropShadow />
+			</Rectangle>
+			<!-- <Rectangle Fill="#FFF" Width="80%" Height="50" CornerRadius="15" Dock="Bottom">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Connexion" />
+				<DropShadow />
+			</Rectangle> -->
+		</Grid>
+	</DockPanel>
+</Panel>

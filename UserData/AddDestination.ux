@@ -1,0 +1,84 @@
+<Panel ux:Class="UserData.AddDestination" ux:Name="c">
+	<Router ux:Dependency="router" />
+
+	<WhileActive>
+		<JavaScript>
+			var Observable = require('FuseJS/Observable');
+			var GeoLocation = require("FuseJS/GeoLocation");
+			var dataInfo = Observable();
+
+			function startLoading() {
+				isBusy.activate();
+				setTimeout(function() {
+					isBusy.deactivate();
+				}, 1000000);
+			};
+
+			startLoading();
+
+			var immediateLocation = JSON.stringify(GeoLocation.location);
+
+			console.log(immediateLocation);
+
+			function geoLocate(){
+				console.log('starting location loaded...');
+				fetch('https://ipapi.co/json')
+				.then(function(response) {
+				  response.text().then(txt => {
+				    console.log(txt);
+				  });
+				})
+				.catch(function(error) {
+				  console.log(error)
+				});
+			}
+
+			geoLocate();
+
+			module.exports = {
+				startLoading: startLoading
+			};
+		</JavaScript>
+	</WhileActive>
+
+	<Panel ux:Class="MyLoadingIndicator" ThemeColor="#1565C0">
+		<float4 ux:Property="ThemeColor" />
+		<Circle ux:Name="rotatingStroke" Width="50" Height="50" StartAngleDegrees="-45" EndAngleDegrees="45">
+			<Stroke Width="2" Color="{ReadProperty ThemeColor}" />
+		</Circle>
+		<Circle Color="{ReadProperty ThemeColor}" Width="20" Height="20">
+			<Timeline ux:Name="myTimeline">
+				<Scale Factor=".5" Duration=".25" Easing="CircularOut" EasingBack="CircularIn" />
+				<Scale Factor="2" Duration=".25" Delay=".25" Easing="BounceOut" EasingBack="BounceIn" />
+			</Timeline>
+		</Circle>
+		<WhileFalse>
+			<Cycle Target="myTimeline.TargetProgress" Low="0" High="1" Frequency=".5" />
+			<Spin Target="rotatingStroke" Frequency="1" />
+		</WhileFalse>
+	</Panel>
+
+	<DockPanel>
+		<!-- <Image File="../Assets/Images/marker.png" Width="25" Alignment="Center" Layer="Background" /> -->
+		<CoreElements.AppBar Title="Selectionner votre ville" Dock="Top" />
+		<StackPanel ItemSpacing="10" Alignment="VerticalCenter">
+			<!-- <Image File="../Assets/Images/marker.png" Width="25" Alignment="Center" /> -->
+			<!-- <Text Value="Selectionner votre ville." TextAlignment="Center" Margin="0,0,0,25" /> -->
+			<!-- <CoreElements.VillesDisponible Label="Yaoundé" />
+			<CoreElements.VillesDisponible Label="Douala" />
+			<CoreElements.VillesDisponible Label="Autres villes" /> -->
+
+			<Panel Clicked="{startLoading}" HitTestMode="LocalBounds" Alignment="VerticalCenter">
+				<Busy ux:Name="isBusy" IsActive="false" />
+				<WhileBusy>
+					<Change loadingPanel.Opacity="1" Duration=".4" />
+				</WhileBusy>
+				<MyLoadingIndicator ux:Name="loadingPanel" Opacity="0" ThemeColor="#000" />
+				
+			</Panel>
+
+			<Text Color="#000" Alignment="Bottom" TextAlignment="Center" Margin="0,40" TextWrapping="Wrap">Recherche de votre position ...</Text>
+
+		</StackPanel>
+	</DockPanel>
+</Panel>

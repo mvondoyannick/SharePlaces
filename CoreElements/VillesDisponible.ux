@@ -1,0 +1,7 @@
+<Panel ux:Class="CoreElements.VillesDisponible">
+	<string ux:Property="Label" />
+	<Rectangle Height="50" Width="200" CornerRadius="25" Fill="#FFF">
+		<Text Value="{Property Label}" TextAlignment="Center" Alignment="Center"  /> 
+		<DropShadow />
+	</Rectangle>
+</Panel>

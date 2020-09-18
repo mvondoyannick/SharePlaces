@@ -1,0 +1,61 @@
+<Panel ux:Class="SharePlace.Splash" Background="#fdfdfd">
+	<Router ux:Dependency="router" />
+	<JavaScript File="App.js" />
+	<JavaScript>
+		var Observable = require('FuseJS/Observable');
+		var hikr = this.Parameters;
+		function detail(){
+			router.push("detail");
+		}
+
+		function itineraire(){
+			router.push("itineraire");
+		}
+
+		function maps(){
+			router.push('maps');
+		}
+
+		function getCords(argv){
+			console.log(JSON.stringify(argv.data));
+			router.push("itineraire", argv.data);
+		}
+
+		module.exports = {
+			detail: detail,
+			itineraire: itineraire,
+			maps: maps,
+			getCords: getCords,
+			hikr: hikr
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<CoreElements.AppBar Dock="Top" />
+
+		<!-- <Circle Size="60" Fill="White" Alignment="BottomRight" Margin="10,0,15,20">
+			<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="30" Value="&#xf029;" />
+			<Shadow Color="Gray" />
+		</Circle> -->
+		<CoreElements.Fab />
+
+		<ScrollView LayoutMode="PreserveVisual" >
+			<StackPanel Margin="10,0,0,0" ItemSpacing="10">
+				<Image Url="https://images.pexels.com/photos/4918481/pexels-photo-4918481.jpeg" Height="200" Margin="0,10,10,0" Padding="10,0,10,0" Width="100%" StretchMode="UniformToFill" Alignment="TopCenter" />
+				<Grid Columns="30,1*,50" Margin="0,15,0,0">
+					<Image File="Assets/Images/baseline_room_black_18dp.png" Width="25" Margin="0,0,0,10" />
+					<Text Value="Itineraire : Village - Bonanjo" />
+					<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="25" Value="&#xf013;" Margin="0,0,10,0" Clicked="{itineraire}" />
+				</Grid>
+				<StackPanel Margin="0,0,10,0" ItemSpacing="10">
+					<Each Items="{trafic_data}">
+						<CoreElements.MiniCard Destination="{destination}" Since="{time}" />
+					</Each>
+				</StackPanel>
+			</StackPanel>
+		</ScrollView>
+
+		<CoreElements.BottomAppBar />
+	</DockPanel>
+</Panel>

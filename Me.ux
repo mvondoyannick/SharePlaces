@@ -1,0 +1,15 @@
+<Panel ux:Class="Shareplace.Me" Background="#fdfdfd">
+	<Router ux:Dependency="router" />
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<Panel Height="50" Width="100%" Dock="Top" Background="#ffffff">
+			<Grid Columns="50,1*,50">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf0c9;" Margin="0,0,0,0" />
+				<Text Value="SharePlace" Alignment="CenterLeft" Padding="25,0,0,0" Margin="0,0,0,0" FontSize="18" />
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf013;" Margin="0,0,0,0" />
+			</Grid>
+			<Shadow />
+		</Panel>
+	</DockPanel>
+</Panel>

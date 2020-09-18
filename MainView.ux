@@ -1,0 +1,23 @@
+<App Background="#fdfdfd">
+	<!-- <Android.StatusBarConfig IsVisible="True" /> -->
+	<Font File="Assets/Font/FontAwesome-webfont.ttf" ux:Global="FontAwesome" />
+	<Router ux:Name="router" />
+	<Navigator DefaultPath="entry">
+		<SharePlace.Splash ux:Template="splash" router="router" />
+		<Shareplace.Detail ux:Template="detail" router="router" />
+		<Shareplace.Itineraire ux:Template="itineraire" router="router" />
+		<Shareplace.Maps ux:Template="maps" router="router" />
+		<Shareplace.start ux:Template="start" router="router" />
+		<Shareplace.Login ux:Template="login" router="router" />
+		<Shareplace.signup_step_2 ux:Template="signup2" router="router" />
+		<Shareplace.signup_step_car ux:Template="car" router="router" />
+		<Shareplace.signup_end ux:Template="signupEnd" router="router" />
+		<Shareplace.Signin ux:Template="signin" router="router" />
+		<Shareplace.Entry ux:Template="entry" router="router" />
+		<Shareplace.driver_or_customer ux:Template="choose" router="router" />
+
+		<!-- UserData interface -->
+		<UserData.Home ux:Template="UserHome" router="router" />
+		<UserData.AddDestination ux:Template="AddDestination" router="router" />
+	</Navigator>
+</App>

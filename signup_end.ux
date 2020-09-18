@@ -1,0 +1,40 @@
+<Panel ux:Class="Shareplace.signup_end">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function login(){
+			router.goto('signin');
+		}
+
+		module.exports = {
+			login: login	
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<Panel Height="50" Dock="Top" Width="100%" Background="#7B1FA2">
+				<Text Value="Terminé" Alignment="Center" TextAlignment="Center" TextColor="#FFF" />
+			<DropShadow />
+		</Panel>
+
+		<!-- Example usage -->
+		<StackPanel Margin="10" ItemSpacing="10" Alignment="VerticalCenter">
+
+				<Image File="Assets/Images/success.png" Alignment="TopCenter" Width="150" Margin="0,20,0,20" />
+				<Text Value="Vous avez désormais un compte SharePlace et vous pouvez vous connecter et commencer à tranporter du personnel." TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+				<Text Value="...n'est ce pas génial?." TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="20" />
+
+		</StackPanel>
+
+		<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{login}">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Se connecter" />
+				<DropShadow />
+			</Rectangle>
+			<!-- <Rectangle Fill="#FFF" Width="80%" Height="50" CornerRadius="15" Dock="Bottom">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Connexion" />
+				<DropShadow />
+			</Rectangle> -->
+		</Grid>
+	</DockPanel>
+</Panel>

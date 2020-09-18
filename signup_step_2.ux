@@ -1,0 +1,70 @@
+<Panel ux:Class="Shareplace.signup_step_2">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var GeoLocation = require("FuseJS/GeoLocation");
+
+		var immediateLocation = JSON.stringify(GeoLocation.location);
+
+		function back(){
+			router.goBack();
+		}
+
+		function next(){
+			router.push("car");
+		}
+
+		console.log(immediateLocation);
+
+		module.exports = {
+			back: back,
+			next: next
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<Panel Height="50" Dock="Top" Width="100%" Background="#7B1FA2">
+			<Grid Columns="50, 1*">
+				<Image File="Assets/Images/outline_arrow_back_white_18dp.png" Width="30" Alignment="Center" Clicked="{back}" />
+				<Text Value="Localisation" Alignment="Center" TextAlignment="Center" TextColor="#FFF" />
+			</Grid>
+			<DropShadow />
+		</Panel>
+
+		<Rectangle Width="100%" Height="60" Fill="#FFF" CornerRadius="15" ux:Class="MiniCard" Margin="0,0,0,10">
+			<string ux:Property="Ville" />
+			<Grid Columns="50, 1*">
+				<Circle Size="15" Fill="Red" Alignment="Center" />
+				<Text Value="{Property Ville}" Alignment="CenterLeft" />
+			</Grid>
+			<DropShadow />
+		</Rectangle>
+
+		<!-- Example usage -->
+		<StackPanel Margin="10" ItemSpacing="10">
+
+			<!-- insert image -->
+			<Image File="Assets/Images/marker.png" Alignment="TopCenter" Width="80" Margin="0,20,0,20" />
+			<Text Value="Selectionner votre région/Ville de travail." TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+			<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+				<MiniCard Ville="Yaoundé (Cameroun)" />
+				<MiniCard Ville="Douala (Cameroun)" />				
+
+		  </Grid>
+
+		</StackPanel>
+		<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{next}">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Continuer" />
+				<DropShadow />
+			</Rectangle>
+			<!-- <Rectangle Fill="#FFF" Width="80%" Height="50" CornerRadius="15" Dock="Bottom">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Connexion" />
+				<DropShadow />
+			</Rectangle> -->
+		</Grid>
+	</DockPanel>
+</Panel>

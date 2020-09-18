@@ -1,0 +1,20 @@
+<Panel Height="50" Width="100%" Dock="Bottom" Background="#4a148c" ux:Class="CoreElements.BottomAppBar">
+	<Grid ColumnCount="4">
+		<Panel ux:Name="l">
+			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf041;" Margin="0,0,0,10" />
+			<Text Value="Localiser" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+		</Panel>
+		<Panel Clicked="{maps}">
+			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf278;" Margin="0,0,0,10" />
+			<Text Value="Carte" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+		</Panel>
+		<Panel>
+			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf029;" Margin="0,0,0,10" />
+			<Text Value="Verifier" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+		</Panel>
+		<Panel>
+			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf2c0;" Margin="0,0,0,10" />
+			<Text Value="Moi" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+		</Panel>
+	</Grid>
+</Panel>

@@ -1,0 +1,170 @@
+<Panel ux:Class="Shareplace.driver_or_customer">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		var Observable = require('FuseJS/Observable');
+
+		var phone = Observable();
+		var password = Observable();
+		var hasStored = Observable(false);
+
+		function customer(){
+			router.push("login");
+		}
+
+		function driver(){
+			router.push("login");
+		}
+
+		function customer_auth(){
+			console.log('Android loggeded in');
+		}
+
+		// login customer
+		function loginCustomer(){
+			//router.goto('UserHome');
+			router.goto('UserHome', {'name': 'lorem'});
+
+			/*console.log('attempt to login customer ...')
+			if (phone.value == "" || password.value == ""){
+				console.log('Valeur d identification vide');
+			}
+			else {
+				console.log('Sending post request ...'+phone.value)
+
+				var url="http://192.168.100.62:4000/api/v1/engine/auth_customer?phone="+phone.value+"&password="+password.value+"&version=1&lat=1&lon=2";
+				fetch(url).then(function(response){
+					return response.json();
+				}).then(function(data){
+					console.log("inside second them")
+					if (data['data'][0] == true){
+						// store data and redirect
+						console.log(JSON.stringify(data['data']));
+
+				    router.goto('UserHome', {'name': 'lorem'});
+					}
+					else {
+						// send toast fo notifications
+						console.log(JSON.stringify(data['data']));
+
+					}
+
+					// store local data
+
+
+					// redirect customer with new data
+				})
+			/*fetch('http://192.168.100.62:4000/api/v1/engine/auth_customer?phone='+phone.value+'&password='+password.value+'&version=1&lat=1&lon=2')
+			.then(function(response){
+				console.log(response.status);
+			})*/
+		//}
+
+		};
+
+		//login driver
+		function loginDriver(){
+
+		}
+
+		module.exports = {
+			customer: customer,
+			driver: driver,
+			loginCustomer: loginCustomer,
+			customer_auth: customer_auth,
+			phone: phone,
+			password: password
+		};
+	</JavaScript>
+
+	<Panel ux:Class="Tab" ClipToBounds="false" Margin="0,0,0,4" Background="#7B1FA2">
+        <string ux:Property="Text" />
+        <Text Value="{ReadProperty Text}" Color="#FFF" Alignment="Center" />
+    </Panel>
+
+    <Rectangle ux:Name="indicator" LayoutMaster="page1Tab" Alignment="Bottom" Height="4" Color="#6c7a89">
+        <LayoutAnimation>
+            <Move RelativeTo="WorldPositionChange" X="1" Duration="0.4" Easing="BackIn"/>
+        </LayoutAnimation>
+    </Rectangle>
+
+    <Text ux:Class="WelcomeText" FontSize="30" Alignment="Center"/>
+
+	<DockPanel>
+		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+
+		 <Grid Dock="Top" ColumnCount="2" Height="50" Background="#bdc3c7">
+          <Panel ux:Name="page1Tab">
+              <Tab Text="Passager">
+                  <Clicked>
+                      <Set navigation.Active="page1" />
+                  </Clicked>
+              </Tab>
+          </Panel>
+          <Panel ux:Name="page2Tab">
+              <Tab Text="Chauffeur">
+                  <Clicked>
+                      <Set navigation.Active="page2" />
+                  </Clicked>
+              </Tab>
+          </Panel>
+      </Grid>
+
+      <PageControl ux:Name="navigation">
+            <Page ux:Name="page1" Background="#eee">
+              <WhileActive Threshold="0.5">
+                  <Set indicator.LayoutMaster="page1Tab" />
+              </WhileActive>
+
+								<!-- Example usage -->
+								<StackPanel Margin="10" ItemSpacing="10">
+
+									<!-- insert image -->
+									<Image File="Assets/Images/avatar.png" Alignment="TopCenter" Width="90" Margin="0,20,0,20" />
+									<Text Value="Identifiez-vous pour rapidement trouver qui vous conduira aujourd'hui!" TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+									<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+								    <MyTextInput PlaceholderText="Numéro téléphone" InputHint="Phone" Margin="0,0,0,10" Value="{phone}" MaxLength="9" />
+								    <MyTextInput PlaceholderText="Mot de passe" InputHint="Number" IsPassword="true" Margin="0,0,0,10" Value="{password}" MaxLength="6" />
+
+								  </Grid>
+
+								</StackPanel>
+
+            	<Rectangle Margin="0,0,0,10" Fill="#FFFFFF" Height="50" Width="80%" Alignment="BottomCenter" CornerRadius="25" Clicked="{loginCustomer}">
+            		<Text Value="Se connecter" Alignment="Center" TextAlignment="Center" />
+            		<DropShadow />
+            	</Rectangle>
+            </Page>
+            <Page ux:Name="page2" Background="#abb7b7">
+                <WhileActive Threshold="0.5">
+                    <Set indicator.LayoutMaster="page2Tab" />
+                </WhileActive>
+
+                <!-- Example usage -->
+								<StackPanel Margin="10" ItemSpacing="10">
+
+									<!-- insert image -->
+									<Image File="Assets/Images/car.png" Alignment="TopCenter" Width="90" Margin="0,20,0,20" />
+									<Text Value="Indentifiez-vous à votre compte Driver SharePlace" TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+									<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+								    <MyTextInput PlaceholderText="Numéro téléphone" Margin="0,0,0,10" />
+								    <MyTextInput PlaceholderText="N° Immatriculation" Margin="0,0,0,10" />
+								    <MyTextInput PlaceholderText="Mot de passe" IsPassword="true" Margin="0,0,0,10" />
+
+								  </Grid>
+
+								</StackPanel>
+
+                <Rectangle Dock="Bottom" Margin="0,0,0,10" Fill="#FFFFFF" Height="50" Width="80%" Alignment="BottomCenter" CornerRadius="25">
+	            		<Text Value="Se connecter" Alignment="Center" TextAlignment="Center" />
+	            		<DropShadow />
+	            	</Rectangle>
+            </Page>
+        </PageControl>
+
+	</DockPanel>
+</Panel>

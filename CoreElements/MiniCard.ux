@@ -1,0 +1,20 @@
+<Rectangle Height="80" CornerRadius="5" Width="100%" Fill="#FFF" Clicked="{getCords}" ux:Class="CoreElements.MiniCard">
+	<string ux:Property="Destination" />
+	<int ux:Property="Since" />
+	<Grid Columns="70,1*">
+		<Circle Width="50" Height="60" Margin="10,0,0,0" Alignment="Center">
+		  <ImageFill File="../Assets/images/batman.png" />
+		  <Circle Fill="Green" Size="10" Alignment="BottomRight"  Margin="53,0,0,20" >
+		  	<Stroke Offset="0" Width="1" Color="#fdfdfd" />
+		  </Circle>
+		</Circle>
+		<Panel Height="50" Width="100%">
+			<StackPanel ItemSpacing="5">
+				<Text Value="{Property Destination}" Margin="10,0,0,0" Font="FontAwesome" />
+				<Text Value="Il y a {Property Since} {unity}, le {date}" Opacity=".6" Margin="10,0,0,0" TextColor="Green" FontSize="10" />
+				<Text Value="Voir sur la carte" Opacity=".6" Margin="10,0,0,0" FontSize="10" />
+			</StackPanel>
+		</Panel>
+	</Grid>
+	<Shadow />
+</Rectangle>

@@ -1,0 +1,34 @@
+<Panel ux:Class="Shareplace.Signin">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function splash(){
+			router.push("splash")
+		}
+
+		module.exports = {
+			splash: splash
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<StackPanel Margin="10" ItemSpacing="10" Alignment="VerticalCenter">
+
+			<!-- insert image -->
+			<Image File="Assets/Images/key.png" Alignment="TopCenter" Width="80" Margin="0,20,0,20" />
+			<Text Value="Identifiiez-vous pour accéder au service." TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+				<MyTextInput PlaceholderText="Numéro téléphone" Margin="0,0,0,10" />
+		    <MyTextInput PlaceholderText="Mot de passe" IsPassword="true" Margin="0,0,0,10" />		
+		    <Text Value="Mot de passe oublié?" TextWrapping="Wrap" TextAlignment="Right" Alignment="CenterRight" Margin="0,-5,0,0" />	
+
+		</StackPanel>
+		<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{splash}">
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Connexion" />
+				<DropShadow />
+			</Rectangle>
+		</Grid>
+		<Text Value="Creer un compte." TextWrapping="Wrap" Dock="Bottom" TextAlignment="Center" Alignment="Center" Margin="10" />
+	</DockPanel>
+</Panel>

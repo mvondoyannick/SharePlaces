@@ -1,0 +1,38 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+  	"Fuse.Maps",
+  	"Fuse.GeoLocation",
+  	"Fuse.Vibration",
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*"
+  ],
+  "Title": "SharePlace",
+  "Description": "An app that helps you organize, track and analyze cat pictures on the internet.",
+  "Version": "0.0.1",
+  "Mobile": {
+    "Orientations": "Portrait",
+    "Package": "com.mycompany.myapp",
+    "PreviewPackage": "com.mycompany.myapp.preview"
+  },
+  "Android": {
+    "ApplicationLabel": "SharePlace",
+    "Description": "An app that helps you organize, track and analyze cat pictures on the internet.",
+    "VersionCode": 412,
+    "VersionName": "0.0.1",
+    "Package": "com.mycompany.myapp",
+    "PreviewPackage": "com.mycompany.myapp.preview",
+    "Icons": {
+      "LDPI": "Assets/Images/icons/36.png",
+      "MDPI": "Assets/Images/icons/48.png",
+      "HDPI": "Assets/Images/icons/72.png",
+      "XHDPI": "Assets/Images/icons/96.png",
+      "XXHDPI": "Assets/Images/icons/144.png",
+      "XXXHDPI": "Assets/Images/icons/192.png"
+    }
+  }
+}
+

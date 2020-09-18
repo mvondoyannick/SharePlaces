@@ -1,0 +1,6 @@
+<Panel ux:Class="Shareplace.start">
+	<Router ux:Dependency="router" />
+	<DockPanel>
+		<Video File="Assets/Videos/video.mp4" Layer="Background" StretchMode="UniformToFill" AutoPlay="true" IsLooping="true" />
+	</DockPanel>
+</Panel>

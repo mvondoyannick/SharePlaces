@@ -1,0 +1,5 @@
+<Circle Size="60" Fill="White" Alignment="BottomRight" Margin="10,0,15,20" ux:Class="CoreElements.Fab">
+	<!-- Creating a Floating Action Button Fab -->
+	<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="30" Value="&#xf029;" />
+	<Shadow Color="Gray" />
+</Circle>

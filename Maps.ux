@@ -1,0 +1,33 @@
+<Panel ux:Class="Shareplace.Maps" Background="#fdfdfd">
+	<Router ux:Dependency="router" />
+	<JavaScript File="App.js" />
+	<JavaScript>
+		function detail(){
+			router.goBack();
+		}
+
+		module.exports = {
+			detail: detail
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<!-- <Panel Height="50" Width="100%" Dock="Top" Background="#ffffff">
+			<Grid Columns="50,1*,50">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf060;" Margin="0,0,0,0" Clicked="{detail}" />
+				<Text Value="Carte itineraire | SharePlace" Alignment="CenterLeft" Padding="25,0,0,0" Margin="0,0,0,0" FontSize="18" />
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf041;" Margin="0,0,0,0" />
+			</Grid>
+			<Shadow />
+		</Panel> -->
+		<CoreElements.AppBar Dock="Top" />
+		<NativeViewHost>
+			<MapView Height="100%" Width="100%" Padding="10,10,10,0" Latitude="{immediateLocation.latitude}" Longitude="{immediateLocation.longitude}" Zoom="15" AllowRotate="true" AllowZoom="true" AllowTilt="true" AllowScroll="true" ShowCompass="true" ShowMyLocation="true" ShowMyLocationButton="true" Tilt="45">
+				<Each Items="{trafic_data}">
+					<MapMarker Latitude="{coords.lat}" Longitude="{coords.long}" Label="Je vais à {destination}, depuis {time} {unity}"/>
+				</Each>
+			</MapView>
+		</NativeViewHost>
+	</DockPanel>
+</Panel>

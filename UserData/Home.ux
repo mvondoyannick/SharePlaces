@@ -1,0 +1,38 @@
+<Panel ux:Class="UserData.Home">
+	<Router ux:Dependency="router" />
+	<JavaScript File="AppCustomer.js" />
+	<JavaScript>
+		var hikr = this.Parameters;
+		console.log("Data from hikr : "+JSON.stringify(hikr));
+		module.exports = {
+			hikr: hikr
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<CoreElements.AppBar Dock="Top" Title="SharePlaces" />
+		<CoreElements.BottomAppBar Dock="Bottom" />
+
+		<ScrollView>
+			<StackPanel ItemSpacing="10" Alignment="BottomCenter" Margin="0,0,0,20">
+				<Rectangle Fill="White" Height="150" Width="100%" Margin="10,20,10,10" CornerRadius="25" Alignment="BottomCenter" Clicked="{AddDestination}">
+					<Image File="../Assets/Images/3411096.jpg" Layer="Background" StretchMode="UniformToFill" Opacity=".5" />
+						<StackPanel ItemSpacing="10" Alignment="VerticalCenter">
+							<Image File="../Assets/Images/marker.png" Alignment="Center" Width="30" />
+							<Text Value="Ajouter un destination" Alignment="Center" TextAlignment="Center" FontSize="17" />
+							<Text Value="Il semble que vous n'avez pas encore choisis votre destination." TextWrapping="Wrap" Margin="20,0,20,0" TextAlignment="Center" FontSize="14" Opacity=".8" />
+						</StackPanel>
+					<DropShadow />
+				</Rectangle>
+				<!-- <CoreElements.MiniCard Destination="Akwa" Since="10" /> -->
+			</StackPanel>
+		</ScrollView>
+
+		<!-- <NativeViewHost>
+			<MapView Width="100%" Height="100%" ShowCompass="true" ShowMyLocation="true" ShowMyLocationButton="true" Zoom="12" Tilt="45">
+
+			</MapView>
+		</NativeViewHost> -->
+	</DockPanel>
+</Panel>

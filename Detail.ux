@@ -1,0 +1,44 @@
+<Panel ux:Class="Shareplace.Detail" Background="#fdfdfd">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function detail(){
+			router.goBack();
+		}
+
+		module.exports = {
+			detail: detail
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+		<Panel Height="50" Width="100%" Dock="Top" Background="#ffffff">
+			<Grid Columns="50,1*,50">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf060;" Margin="0,0,0,0" Clicked="{detail}" />
+				<Text Value="Detail demandeur ..." Alignment="CenterLeft" Padding="25,0,0,0" Margin="0,0,0,0" FontSize="18" />
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#000" Alignment="Center" FontSize="23" Value="&#xf013;" Margin="0,0,0,0" />
+			</Grid>
+			<Shadow />
+		</Panel>
+		<ScrollView>
+			<StackPanel ItemSpacing="10">
+				<NativeViewHost>
+					<MapView Height="250" Width="100%" Padding="10,10,10,0" Longitude="5" Latitude="10" Zoom="9" />
+				</NativeViewHost>
+				<Rectangle Width="50%" Height="1" Fill="#000" Alignment="Center" Margin="0,20,0,20" />
+				<StackPanel ItemSpacing="10">
+					<Panel Height="40" Width="80%" Alignment="Center">
+						<Grid Columns="50,1*" Margin="20,0,20,0">
+							<Text Value="&#xf0f3;" Font="FontAwesome" />
+							<Text Value="Lorem ipsum dolor amet" />
+						</Grid>
+					</Panel>
+				</StackPanel>
+			</StackPanel>
+		</ScrollView>
+		<Rectangle Height="50" Dock="Bottom" Margin="10,0,10,10" Fill="#fdfdfd" CornerRadius="20" Width="80%">
+			<Text Value="Accepter" Alignment="Center" />
+			<DropShadow />
+		</Rectangle>
+	</DockPanel>
+</Panel>

@@ -1,0 +1,167 @@
+<Panel ux:Class="Shareplace.Login">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function step2(){
+			router.push("signup2");
+		}
+
+		module.exports = {
+			step2 : step2
+		};
+	</JavaScript>
+
+	<Panel ux:Class="Tab1" ClipToBounds="false" Margin="0,0,0,4" Background="#7B1FA2">
+    <string ux:Property="Text" />
+    <Text Value="{ReadProperty Text}" Color="#FFF" Alignment="Center" />
+  </Panel>
+
+    <Rectangle ux:Name="indicator1" LayoutMaster="page1Tab1" Alignment="Bottom" Height="4" Color="#6c7a89">
+      <LayoutAnimation>
+        <Move RelativeTo="WorldPositionChange" X="1" Duration="0.4" Easing="BackIn"/>
+      </LayoutAnimation>
+    </Rectangle>
+
+    <Text ux:Class="WelcomeText1" FontSize="30" Alignment="Center"/>
+
+	<DockPanel>
+		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
+
+		<Grid Dock="Top" ColumnCount="2" Height="50" Background="#bdc3c7">
+        <Panel ux:Name="page1Tab1">
+            <Tab Text="Passager">
+                <Clicked>
+                    <Set navigation1.Active="pagea" />
+                </Clicked>
+            </Tab>
+        </Panel>
+        <Panel ux:Name="page2Tab2">
+            <Tab Text="Chauffeur">
+                <Clicked>
+                    <Set navigation1.Active="pageb" />
+                </Clicked>
+            </Tab>
+        </Panel>
+    </Grid>
+
+    <PageControl ux:Name="navigation1">
+        <Page ux:Name="pagea" Background="#FFF">
+          <WhileActive Threshold="0.5">
+              <Set indicator1.LayoutMaster="page1Tab1" />
+          </WhileActive>
+
+          <DockPanel>
+
+	          <ScrollView>
+
+							<!-- Example usage -->
+							<StackPanel Margin="10" ItemSpacing="10">
+
+								<!-- insert image -->
+								<Image File="Assets/Images/avatar.png" Alignment="TopCenter" Width="90" Margin="0,20,0,20" />
+								<Text Value="Identifiez-vous pour rapidement trouver qui vous conduira aujourd'hui!" TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+								<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+							    <MyTextInput PlaceholderText="Numéro téléphone" InputHint="Phone" Margin="0,0,0,10" Value="{phone}" MaxLength="9" />
+							    <MyTextInput PlaceholderText="Mot de passe" InputHint="Number" IsPassword="true" Margin="0,0,0,10" Value="{password}" MaxLength="6" />
+							    <MyTextInput PlaceholderText="Confirmer mot de passe" InputHint="Number" IsPassword="true" Margin="0,0,0,10" Value="{password}" MaxLength="6" />
+							    <Grid ColumnCount="2">
+							    	<Selection Value="Masculin" MaxCount="1" />
+								    <Sexe Label="Masculin" Margin="0,0,5,0" />
+								    <Sexe Label="Féminin" Margin="5,0,0,0" />
+								  </Grid>
+							    
+
+							  </Grid>
+
+							</StackPanel>
+
+						</ScrollView>
+
+						<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+							<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{step2}">
+								<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Continuer" />
+								<DropShadow />
+							</Rectangle>
+						</Grid>
+
+					</DockPanel>
+
+        </Page>
+        <Page ux:Name="pageb" Background="#FFF">
+            <WhileActive Threshold="0.5">
+                <Set indicator1.LayoutMaster="page2Tab2" />
+            </WhileActive>
+
+            <DockPanel>
+
+	            <ScrollView>
+
+		            <!-- Example usage -->
+								<StackPanel Margin="10" ItemSpacing="10">
+
+									<!-- insert image -->
+									<Image File="Assets/Images/car.png" Alignment="TopCenter" Width="90" Margin="0,20,0,20" />
+									<Text Value="Indentifiez-vous à votre compte Driver SharePlace" TextWrapping="Wrap" TextAlignment="Center" Alignment="Center" Margin="10" />
+
+									<Grid ColumnCount="1" Alignment="VerticalCenter">
+
+								    <MyTextInput PlaceholderText="Nom et prénom" Margin="0,0,0,10" />
+										<MyTextInput PlaceholderText="Sexe" Margin="0,0,0,10" />
+								    <MyTextInput PlaceholderText="Numéro téléphone" Margin="0,0,0,10" />
+								    <MyTextInput PlaceholderText="Mot de passe" IsPassword="true" Margin="0,0,0,10" />
+								    <MyTextInput PlaceholderText="Repeter mot de passe" IsPassword="true" Margin="0,0,0,10" />
+
+								  </Grid>
+
+								</StackPanel>
+
+							</ScrollView>
+
+							<Grid ColumnCount="1" Dock="Bottom" Margin="0,0,0,20">
+								<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="15" Dock="Bottom" Clicked="{step2}">
+									<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="Continuer" />
+									<DropShadow />
+								</Rectangle>
+							</Grid>
+
+						</DockPanel>
+
+        </Page>
+
+    </PageControl>
+
+		<!-- <Panel Height="50" Dock="Top" Width="100%" Background="#7B1FA2">
+			<Text Value="Creer mon compte" Alignment="Center" TextAlignment="Center" TextColor="#FFF" />
+			<DropShadow />
+		</Panel> -->
+		<!-- Subclassing TextInput -->
+		<TextInput ux:Class="MyTextInput" FontSize="20" PlaceholderColor="#ccc" Padding="10">
+	    <Rectangle Layer="Background" CornerRadius="5">
+        <Stroke Width="1" Color="#ccc" />
+        <SolidColor Color="White" />
+	    </Rectangle>
+		</TextInput>
+
+		<Rectangle Height="50" Width="100%" Fill="#FFF" CornerRadius="5" ux:Class="Sexe">
+    	<string ux:Property="Label" />
+    	<Selectable Value="{Property Label}" />
+    	<Grid Columns="50, 1*">
+    		<Circle Fill="Green" Name="c" Size="15" Alignment="Center" />
+    		<Text Value="{Property Label}" Alignment="CenterLeft" Name="txt" />
+    	</Grid>
+    	<WhileSelected>
+    		<Change c.Fill="#000" Duration=".2" />
+    		<Change c.Size="25" Duration=".2" Easing="BounceIn" />
+    		<Change txt.TextColor="#FFF" Duration=".2" />
+    		<Change this.Color="#18f" Duration="0.2" />
+    	</WhileSelected>
+    	<Tapped>
+    		<ToggleSelection />
+    	</Tapped>
+			<DropShadow />
+		</Rectangle>
+
+	</DockPanel>
+</Panel>

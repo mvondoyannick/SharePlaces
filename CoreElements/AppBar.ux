@@ -1,0 +1,13 @@
+<Panel ux:Class="CoreElements.AppBar" Background="#ffffff" Height="50" Width="100%">
+	<string ux:Property="Title" />
+	<Grid Columns="50,1*,50">
+		<Image File="../Assets/Images/baseline_menu_black_18dp.png" Width="25" Alignment="Center" />
+		<Text Value="{Property Title}" Alignment="CenterLeft" Padding="25,0,0,0" Margin="0,0,0,0" FontSize="18" />
+			<Image File="../Assets/Images/baseline_notifications_none_black_18dp.png" Width="25">
+			<Circle Fill="Red" Size="10" Alignment="Center"  Margin="15,0,0,15" >
+		  	<Stroke Offset="0" Width="1" Color="#fdfdfd" />
+		  </Circle>
+		</Image>
+	</Grid>
+	<DropShadow />
+</Panel>
