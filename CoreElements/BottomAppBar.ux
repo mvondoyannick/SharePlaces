@@ -1,12 +1,24 @@
-<Panel Height="50" Width="100%" Dock="Bottom" Background="#4a148c" ux:Class="CoreElements.BottomAppBar">
+<Panel Height="60" Width="100%" Dock="Bottom" Background="#4a148c" ux:Class="CoreElements.BottomAppBar">
 	<Grid ColumnCount="4">
 		<Panel ux:Name="l">
-			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf041;" Margin="0,0,0,10" />
-			<Text Value="Localiser" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+			<StackPanel ItemSpacing="5" Margin="10">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="VerticalCenter" FontSize="20" Value="&#xf041;" ux:Name="marker" />
+				<Text Value="Localiser" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" ux:Name="txt1" />
+				<WhilePressed>
+					<Change marker.FontSize="34" Duration=".2" DurationBack=".1" />
+					<Change txt1.Visibility="Collapsed" Duration=".2" DurationBack=".1" />
+				</WhilePressed>
+			</StackPanel>
 		</Panel>
 		<Panel Clicked="{maps}">
-			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf278;" Margin="0,0,0,10" />
-			<Text Value="Carte" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" />
+			<StackPanel ItemSpacing="5" Margin="10">
+				<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="VerticalCenter" FontSize="20" Value="&#xf278;" ux:Name="icn1" />
+				<Text Value="Carte" TextColor="#FFF" FontSize="12" Alignment="BottomCenter" Margin="0,0,0,5" ux:Name="txt2" />
+				<WhilePressed>
+					<Change icn1.FontSize="34" Duration=".2" DurationBack=".1" />
+					<Change txt2.Visibility="Collapsed" Duration=".2" DurationBack=".1" />
+				</WhilePressed>
+			</StackPanel>
 		</Panel>
 		<Panel>
 			<Text Font="FontAwesome" TextAlignment="Center" Color="#FFF" Alignment="Center" FontSize="20" Value="&#xf029;" Margin="0,0,0,10" />

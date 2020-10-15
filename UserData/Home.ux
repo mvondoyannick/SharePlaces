@@ -9,15 +9,25 @@
 		};
 	</JavaScript>
 	<DockPanel>
-		<StatusBarBackground Background="#c7c7c7"  Dock="Top" />
+		<StatusBarBackground Background="#c7c7c7" Dock="Top" />
 		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
 		<CoreElements.AppBar Dock="Top" Title="SharePlaces" />
 		<CoreElements.BottomAppBar Dock="Bottom" />
 
 		<ScrollView>
 			<StackPanel ItemSpacing="10" Alignment="BottomCenter" Margin="0,0,0,20">
+				<ScrollView AllowedScrollDirections="Horizontal">
+					<StackPanel ItemSpacing="10" Orientation="Horizontal" Alignment="TopCenter">
+						<Each Count="10">
+							<Rectangle Height="140" Width="250" Fill="#FFF" Margin="10" CornerRadius="10">
+								<DropShadow />
+							</Rectangle>
+						</Each>
+					</StackPanel>
+				</ScrollView>
+				
 				<Rectangle Fill="White" Height="150" Width="100%" Margin="10,20,10,10" CornerRadius="25" Alignment="BottomCenter" Clicked="{AddDestination}">
-					<Image File="../Assets/Images/3411096.jpg" Layer="Background" StretchMode="UniformToFill" Opacity=".5" />
+					<Image File="../Assets/Images/3411096.jpg" Layer="Background" StretchMode="UniformToFill" Opacity=".5" StretchSizing="Zero" LayoutRole="Standard" />
 						<StackPanel ItemSpacing="10" Alignment="VerticalCenter">
 							<Image File="../Assets/Images/marker.png" Alignment="Center" Width="30" />
 							<Text Value="Ajouter un destination" Alignment="Center" TextAlignment="Center" FontSize="17" />

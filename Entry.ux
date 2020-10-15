@@ -15,22 +15,22 @@
 		};
 	</JavaScript>
 	<DockPanel>
-		<StatusBarBackground Background="#7B1FA2"  Dock="Top" />
+		<StatusBarBackground Background="#7B1FA2" Dock="Top" />
 		<BottomBarBackground Dock="Bottom" Background="#fdfdfd" />
 
 		<Image File="Assets/Images/3677665.jpg" Layer="Background" StretchMode="Uniform" />
 
 		<StackPanel ItemSpacing="5" Margin="0,50,0,0">
-			<Text Value="SharedPlaces" Alignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap" />
+			<Text Value="SharedPlaces" Alignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap" Font="FontAwesome" />
 			<Text Value="Car places shared" Opacity=".5" Alignment="Center" TextAlignment="Center" FontSize="15" TextWrapping="Wrap" />
 		</StackPanel>
 
 		<Grid ColumnCount="2" Dock="Bottom" Margin="0,0,0,20">
-			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="25" Dock="Bottom" Clicked="{choose}">
+			<Rectangle Fill="#FFF" Width="70%" Height="50" CornerRadius="10" Dock="Bottom" Clicked="{choose}">
 				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="S'identifier" />
 				<DropShadow />
 			</Rectangle>
-			<Rectangle Fill="#FFF" Width="80%" Height="50" CornerRadius="25" Dock="Bottom" Clicked="{signup}">
+			<Rectangle Fill="#FFF" Width="80%" Height="50" CornerRadius="10" Dock="Bottom" Clicked="{signup}">
 				<Text Alignment="Center" TextAlignment="Center" TextColor="#000" Value="S'enregistrer" />
 				<DropShadow />
 			</Rectangle>
